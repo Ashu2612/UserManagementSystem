@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="UserManagementSystem.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserManagementSystem.Views" xmlns:vm="clr-namespace:UserManagementSystem.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="850">
+    
+    <UserControl.DataContext>
+        <vm:LoginViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" />
+        <Grid HorizontalAlignment="Center" Height="443" VerticalAlignment="Center" Width="303">
+            <Label Content="Log In" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="30" Margin="0,36,0,0" VerticalAlignment="Top" Height="49" Width="219"/>
+            <TextBox x:Name="UserNameLbl" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding BorderBrush}" HorizontalAlignment="Left" TextAlignment="Center" Height="31" Margin="104,230,0,0" TextWrapping="Wrap" FontWeight="UltraLight"  FontSize="18" VerticalAlignment="Top" Width="194"/>
+            <TextBox x:Name="PasswordLbl" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding BorderBrush}" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="32" Margin="104,282,0,0" FontWeight="UltraLight" FontSize="18" VerticalAlignment="Top" Width="194"/>
+            <Button Content="Log In" Command="{Binding LoginCommand}" CommandParameter="{Binding LoginCommand}" HorizontalAlignment="Center" Height="33" Margin="0,354,0,0" VerticalAlignment="Top" Width="172"/>
+            <TextBlock HorizontalAlignment="Left" Height="24" Margin="10,286,0,0" TextWrapping="Wrap" FontSize="15" Text="Password :-" VerticalAlignment="Top" Width="89"/>
+            <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,233,0,0" TextWrapping="Wrap" FontSize="15" Text="User Name :-" VerticalAlignment="Top" Width="89"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,-19,-11"/>
+        </Grid>
+    </Grid>
+</UserControl>
