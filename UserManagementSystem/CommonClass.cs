@@ -16,6 +16,36 @@ namespace UserManagementSystem
     {
         public static string connectionString = "Server=CQMPRDTNE01\\MSSQLSERVER01;Database=UserManagementSystem;Integrated Security=true;";
 
+        public static bool CheckUserIdExists(int userId, string connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Prepare the SQL query
+                string query = "SELECT COUNT(*) FROM UsersTable WHERE UserId = @UserId";
+
+                // Create the command object
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Set the parameter value
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    // Execute the query and get the count
+                    int count = (int)command.ExecuteScalar();
+
+                    // Check if the count is greater than 0
+                    if (count > 0)
+                    {
+                        return true; // User ID exists
+                    }
+                    else
+                    {
+                        return false; // User ID does not exist
+                    }
+                }
+            }
+        }
         public static bool ErrorLogging(string exMessage)
         {
             try
