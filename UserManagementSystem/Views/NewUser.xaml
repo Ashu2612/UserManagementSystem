@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UserManagementSystem.Views.MainPage"
+﻿<UserControl x:Class="UserManagementSystem.Views.NewUser"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,32 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="850">
     <UserControl.DataContext>
-        <vm:UserRolesViewModels/>
+        <vm:NewUserViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <Grid x:Name="NewRoleGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="424" Margin="405,95,0,0" VerticalAlignment="Top" Width="608">
-            <TextBox x:Name="UserRoleLbl" Height="35"  Text="{Binding UserRole, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding BorderBrush}" TextAlignment="Center" FontSize="15" TextWrapping="Wrap" Margin="245,67,102,322" MaxLength="20" PreviewTextInput="TextBox_PreviewTextInput" Background="Transparent" />
-            <TextBlock TextWrapping="Wrap" Text="Role Name :-" FontSize="18" Margin="41,67,355,322"/>
-            <TextBox x:Name="DescriptionLbl" TextWrapping="Wrap" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" TextAlignment="Center" FontSize="12" Margin="245,123,102,166" MaxLength="100" Background="Transparent"/>
-            <TextBlock HorizontalAlignment="Left" Height="37" Margin="41,123,0,0" TextWrapping="Wrap" Text="Description(Optional) :-" FontSize="18" VerticalAlignment="Top" Width="199"/>
-            <Button Content="Add Role" Command="{Binding SubmitCommand}" CommandParameter="{Binding SubmitCommand}" HorizontalAlignment="Center" Height="33" FontSize="15" Margin="0,354,0,0" VerticalAlignment="Top" Width="172"/>
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="402" VerticalAlignment="Top" Width="608"/>
-        </Grid>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid HorizontalAlignment="Left" Margin="10,66,0,-21" Width="217">
-                <Button x:Name="NewRole" Content="User Role&#xD;&#xA;&#xA;" FontSize="20" Height="31"  Margin="0,25,0,368" Width="188" HorizontalAlignment="Center" BorderThickness="0" Background="Transparent" Click="NewRole_Click"/>
-                <Button x:Name="NewUser" Content="New User&#xA;" FontSize="20" Height="31"  Margin="0,82,0,312" Width="188" HorizontalAlignment="Center" BorderThickness="0" Click="NewUser_Click" Background="Transparent"/>
-                <Button x:Name="ViewUser" Content="View/Search User&#xA;" FontSize="20" Height="31"  Margin="0,138,0,255" Width="188" HorizontalAlignment="Center" BorderThickness="0" Click="ViewUser_Click" Background="Transparent" />
+                <Button x:Name="NewRole" Content="User Role&#xD;&#xA;&#xA;" FontSize="20" Height="31"  Margin="0,25,0,368" Width="188" HorizontalAlignment="Center" BorderThickness="0" Background="Transparent" Command="{Binding AddNewRole}" CommandParameter="{Binding AddNewRole}"/>
+                <Button x:Name="AddNewUser" Content="New User&#xA;" FontSize="20" Height="31"  Margin="0,82,0,312" Width="188" HorizontalAlignment="Center" BorderThickness="0" Background="Transparent"/>
+                <Button x:Name="ViewUser" Content="View/Search User&#xA;" FontSize="20" Height="31"  Margin="0,138,0,255" Width="188" HorizontalAlignment="Center" BorderThickness="0" Command="{Binding UserData}" CommandParameter="{Binding UserData}" Background="Transparent" />
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="403" VerticalAlignment="Top" Width="217"/>
             </Grid>
             <TextBlock HorizontalAlignment="Center" Height="51" Margin="133,10,0,0" TextWrapping="Wrap" Text="   User Management System" FontSize="35" TextAlignment="Justify" VerticalAlignment="Top" Width="571"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="830"/>
-            <Grid x:Name="NewUserGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="424" Margin="232,66,0,0" VerticalAlignment="Top" Width="608">
+            <Grid x:Name="NewUserGrid" HorizontalAlignment="Left" Height="424" Margin="232,66,0,0" VerticalAlignment="Top" Width="608">
                 <Button x:Name="UserSave" Command="{Binding NewUserSubmit}" Content="Save" HorizontalAlignment="Left" Height="33" FontSize="15" Margin="74,353,0,0" VerticalAlignment="Top" Width="172"/>
                 <Button x:Name="EditUserData" Command="{Binding EditUserSubmit}" Visibility="Hidden" Content="Edit" HorizontalAlignment="Left" Height="33" FontSize="15" Margin="74,353,0,0" VerticalAlignment="Top" Width="172" />
                 <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Height="33" FontSize="15" Margin="377,353,0,0" VerticalAlignment="Top" Width="172" Click="Cancel_Click" />
-                <Button x:Name="EditCancel" Content="Cancel" HorizontalAlignment="Left" Height="33" FontSize="15" Margin="377,353,0,0" VerticalAlignment="Top" Width="172" Click="EditCancel_Click" />
-                <TextBox x:Name="UserIDLbl" Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding UserIdBorder}" MaxLength="10" HorizontalAlignment="Left" Height="31" TextAlignment="Justify" FontSize="16" Margin="124,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" PreviewTextInput="UserIDLbl_PreviewTextInput" Background="Transparent"/>
+                <Button x:Name="EditCancel" Content="Cancel" HorizontalAlignment="Left" Height="33" FontSize="15" Margin="377,353,0,0" VerticalAlignment="Top" Width="172"/>
+                <TextBox x:Name="UserIDLbl" Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding UserIdBorder}" MaxLength="10" HorizontalAlignment="Left" Height="31" TextAlignment="Justify" FontSize="16" Margin="123,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Background="Transparent"/>
                 <TextBox x:Name="FirstNameLbl"  Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding FirstNameBorder}" HorizontalAlignment="Left" ToolTip="" TextAlignment="Justify" FontSize="16" Height="30" Margin="124,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Background="Transparent"/>
                 <TextBlock HorizontalAlignment="Left"  Height="31" Margin="10,98,0,0" TextWrapping="Wrap" FontSize="18" Text="Last Name :" VerticalAlignment="Top" Width="100"/>
                 <TextBox x:Name="LastNameLbl"  Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding LastNameBorder}" HorizontalAlignment="Left" TextAlignment="Justify" FontSize="16" Height="32" Margin="124,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466"  Background="Transparent"/>
@@ -43,24 +35,13 @@
                 <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,182,0,0" TextWrapping="Wrap" FontSize="18" Text="Location :" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.501,0.523"/>
                 <TextBox x:Name="LocationLbl"  Text="{Binding Location, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding LocationBorder}" HorizontalAlignment="Left" Height="33" TextAlignment="Justify" FontSize="16" Margin="124,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Background="Transparent"/>
                 <TextBlock HorizontalAlignment="Left" Height="31" Margin="10,224,0,0" TextWrapping="Wrap" FontSize="18" Text="Email :" VerticalAlignment="Top" Width="92"/>
-                <TextBox x:Name="EmailLbl"  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding EmailBorder}" TextChanged="EmailLbl_TextChanged" TextAlignment="Justify" FontSize="16" HorizontalAlignment="Left" Height="31" Margin="124,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Background="Transparent"/>
+                <TextBox x:Name="EmailLbl"  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" TextChanged="EmailLbl_TextChanged" BorderBrush="{Binding EmailBorder}"  TextAlignment="Justify" FontSize="16" HorizontalAlignment="Left" Height="31" Margin="124,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Background="Transparent"/>
                 <ComboBox x:Name="UserRoleDrpdw" Text="{Binding UsersRole, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{Binding UserRoleBorder}" HorizontalAlignment="Left" Height="35" FontSize="16" Margin="124,267,0,0" VerticalAlignment="Top" Width="466"/>
                 <TextBlock HorizontalAlignment="Left" Height="31" Margin="10,271,0,0" TextWrapping="Wrap" FontSize="18" Text="User Role :" VerticalAlignment="Top" Width="92"/>
                 <TextBlock x:Name="ErrorMsgLbl" Height="33" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,315,0,0" TextWrapping="Wrap" FontSize="15" TextAlignment="Center" FontWeight="Bold" Width="250"/>
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="0,0,0,22" Width="608"/>
             </Grid>
-
-            <Grid x:Name="ViewUserList" Visibility="Hidden" HorizontalAlignment="Left" Height="424" Margin="232,66,0,0" VerticalAlignment="Top" Width="608">
-                <Grid x:Name="UserTableTopGrid" HorizontalAlignment="Left"  Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="582">
-                <TextBox x:Name="SearchByUserIdLbl"  ToolTip="{Binding SearchByUserIdTooltip}" HorizontalAlignment="Left" Height="22" Margin="368,0,0,0" TextWrapping="Wrap" Background="Transparent" BorderBrush="Black" VerticalAlignment="Center" Width="148"/>
-                    <Button x:Name="SearchBtn" Content="Search" HorizontalAlignment="Left"  BorderBrush="Black" Height="22" Margin="521,0,0,0" VerticalAlignment="Center" Width="61" Background="Transparent" Click="SearchBtn_Click"/>
-                </Grid>
-                <Grid HorizontalAlignment="Center" Height="42" Margin="0,377,0,0" VerticalAlignment="Top" Width="582" RenderTransformOrigin="0.497,0.472">
-                    <Button x:Name="ExportToExcelBtn"  Command="{Binding ExportToExcelSubmit}" Content="Export To Excel" FontSize="14" BorderBrush="Black" HorizontalAlignment="Left" Height="21" Margin="439,0,0,0" VerticalAlignment="Top" Width="133" Background="Transparent"/>
-                </Grid>
-                <Grid x:Name="UserDataGrid" HorizontalAlignment="Center" Height="320" VerticalAlignment="Center" Width="588"/>
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="403" VerticalAlignment="Top" Width="608"/>
-            </Grid>
         </Grid>
+
     </Grid>
 </UserControl>

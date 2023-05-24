@@ -6,11 +6,9 @@
              xmlns:local="clr-namespace:UserManagementSystem.Views" xmlns:vm="clr-namespace:UserManagementSystem.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="850">
-    
     <UserControl.DataContext>
         <vm:LoginViewModel/>
     </UserControl.DataContext>
-
     <Grid>
         <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" />
         <Grid HorizontalAlignment="Center" Height="443" VerticalAlignment="Center" Width="303">

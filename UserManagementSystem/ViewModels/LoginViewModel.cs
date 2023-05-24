@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows;
-using UserManagementSystem.Models;
-using UserManagementSystem.Commands;
+using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
+using UserManagementSystem.Commands;
+using UserManagementSystem.Models;
 using UserManagementSystem.Views;
 
 namespace UserManagementSystem.ViewModels
@@ -66,9 +61,9 @@ namespace UserManagementSystem.ViewModels
             if (user.UserName == "UserAdmin" && user.Password == "UserAdmin")
             {
                 BorderBrush = Brushes.Black;
-                MainPage mainPage = new MainPage();
+                AddUserRole addUserRole = new AddUserRole();
                 Window currentWindow = Application.Current.MainWindow;
-                currentWindow.Content = mainPage;
+                currentWindow.Content = addUserRole;
             }
             else
             {
